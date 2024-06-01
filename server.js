@@ -7,7 +7,7 @@ const morgan=require('morgan')
 // user routes
 const authRoutes=require('./routes/authRoutes');
 const healthRoutes=require('./routes/healthRoutes');
-
+const reminderRoutes=require('./routes/reminderRoutes');
 // config 
 const app=express();
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +21,7 @@ app.get('/',(req,res,next)=>{
     res.send("API is running");
 });
 
-app.use(authRoutes,healthRoutes);
-
+app.use(authRoutes);
+app.use('/health',healthRoutes);
+app.use('/reminder',reminderRoutes);
 module.exports=app;

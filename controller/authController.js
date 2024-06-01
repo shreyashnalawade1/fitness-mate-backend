@@ -98,7 +98,7 @@ exports.protect = tryCatch(async (req, res, next) => {
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   
     // 3) Check if user still exists
-    const currentUser = await pool.query('SELECT name,email,password_changed_at FROM users WHERE id=$1',[decoded.id]);
+    const currentUser = await pool.query('SELECT id,name,email,password_changed_at FROM users WHERE id=$1',[decoded.id]);
 
     if (currentUser.rowCount<=0) {
       return next(
