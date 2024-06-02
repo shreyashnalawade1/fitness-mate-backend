@@ -1,4 +1,5 @@
 const pool = require("../config/dbconnect");
+const tryCatch = require("../utils/tryCatch");
 
 // Get reminder records between two dates
 exports.getReminders = tryCatch(async (req, res, next) => {

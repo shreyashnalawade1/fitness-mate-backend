@@ -24,4 +24,6 @@ app.get('/',(req,res,next)=>{
 app.use(authRoutes);
 app.use('/health',healthRoutes);
 app.use('/reminder',reminderRoutes);
+
+
 module.exports=app;
