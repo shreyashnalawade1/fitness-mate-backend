@@ -39,6 +39,7 @@ else {
       socket.join(user_id);
     })
     socket.on('new_msg_user',(data)=>{
+      console.log(data);
       io.to(data.to).emit('new_msg',data);
     })
   })
