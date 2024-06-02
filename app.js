@@ -26,22 +26,22 @@ else {
   // Workers can share any TCP connection
   // In this case it is an HTTP server
   const server = createServer(app);
-  const io = new Server(server, {
-    cors: {
-      origin: "*",
-      methods: ["GET", "POST"]
-    }
-  });
-  io.on('connection',(socket)=>{
-    console.log(socket.id); 
-    socket.on('join_room',(user_id)=>{
-      console.log(user_id);
-      socket.join(user_id);
-    })
-    socket.on('new_msg_user',(data)=>{
-      io.to(data.to).emit('new_msg',data);
-    })
-  })
+  // const io = new Server(server, {
+  //   cors: {
+  //     origin: "*",
+  //     methods: ["GET", "POST"]
+  //   }
+  // });
+  // io.on('connection',(socket)=>{
+  //   console.log(socket.id); 
+  //   socket.on('join_room',(user_id)=>{
+  //     console.log(user_id);
+  //     socket.join(user_id);
+  //   })
+  //   socket.on('new_msg_user',(data)=>{
+  //     io.to(data.to).emit('new_msg',data);
+  //   })
+  // })
 
   server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
