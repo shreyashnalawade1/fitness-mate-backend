@@ -1,5 +1,5 @@
 const express=require('express');
-const { getWeight, putWeight, updateWeight, deleteWeight, getHeight, putHeight, updateHeight, deleteHeight, getSleep, putSleep, updateSleep, deleteSleep, getTemperature, putTemperature, deleteTemperature, updateTemperature, getGlucose, putGlucose, updateGlucose, deleteGlucose, getLocation, putLocation, updateLocation, deleteLocation, getActivity, updateActivity, deleteActivity, getWaterLogs, putWaterLogs, updateWaterLog, deleteWaterLog } = require('../controller/healthStatsController');
+const { getWeight, putWeight, updateWeight, deleteWeight, getHeight, putHeight, updateHeight, deleteHeight, getSleep, putSleep, updateSleep, deleteSleep, getTemperature, putTemperature, deleteTemperature, updateTemperature, getGlucose, putGlucose, updateGlucose, deleteGlucose, getLocation, putLocation, updateLocation, deleteLocation, getActivity, updateActivity, deleteActivity, getWaterLogs, putWaterLogs, updateWaterLog, deleteWaterLog, putActivity } = require('../controller/healthStatsController');
 const { protect } = require('../controller/authController');
 
 const router=express.Router();
@@ -25,7 +25,7 @@ router.route('/location/:id').patch(updateLocation).delete(deleteLocation);
 router.route('/location').get(getLocation).post(putLocation);
 router.route('/location/:id').patch(updateLocation).delete(deleteLocation);
 
-router.route('/activity').get(getActivity).post(putLocation);
+router.route('/activity').get(getActivity).post(putActivity);
 router.route('/activity/:id').patch(updateActivity).delete(deleteActivity);
 
 
