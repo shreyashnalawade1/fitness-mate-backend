@@ -76,10 +76,10 @@ exports.getHeight = tryCatch(async (req, res, next) => {
 
   // Add a new height record
 exports.putHeight = tryCatch(async (req, res, next) => {
-    const {  timeStamp, height } = req.body; 
+    const {  timestamp, height } = req.body; 
     const id=req.user.id;
     console.log(req.user)
-    const row = await pool.query('INSERT INTO height_records (user_id, recorded_at_timestamp, height) VALUES($1, $2, $3) RETURNING *', [id, new Date(timeStamp), height]);
+    const row = await pool.query('INSERT INTO height_records (user_id, recorded_at_timestamp, height) VALUES($1, $2, $3) RETURNING *', [id, new Date(timestamp), height]);
     return res.status(201).json({
       message: "New height record added for the user",
       data: {
