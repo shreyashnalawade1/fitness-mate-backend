@@ -24,7 +24,7 @@ module.exports.getWeight=tryCatch(async (req,res,next)=>{
 module.exports.putWeight=tryCatch(async(req,res,next)=>{
     const {timeStamp,weight}=req.body;
     const user_id=req.user.id;
-    const row=await pool.query('INSERT INTO weight_records (user_id,recorded_at_timestamp,weight) VALUES($1,$2,$3) RETURNING *',[user_id,new Date(timeStamp),weight]);
+    const row=await pool.query('INSERT INTO weight_records (user_id,timestamp,weight) VALUES($1,$2,$3) RETURNING *',[user_id,new Date(timeStamp),weight]);
     return res.status(201).json({
         "message":"New weight Record added for the user",
         data:{
