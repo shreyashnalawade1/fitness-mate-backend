@@ -196,7 +196,7 @@ exports.getGlucose = tryCatch(async (req, res, next) => {
   exports.putGlucose = tryCatch(async (req, res, next) => {
     const {  timestamp, glucose_level } = req.body;
     const user_id=req.user.id;
-    const row = await pool.query('INSERT INTO glucose_records (user_id, timestamp, glucose_level) VALUES($1, $2, $3) RETURNING *', [user_id, new Date(timestamp), glucose_level]);
+    const row = await pool.query('INSERT INTO blood_glucose_records (user_id, timestamp, glucose_level) VALUES($1, $2, $3) RETURNING *', [user_id, new Date(timestamp), glucose_level]);
     return res.status(201).json({
       message: "New glucose record added for the user",
       data: {
