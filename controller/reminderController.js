@@ -23,9 +23,9 @@ exports.getReminders = tryCatch(async (req, res, next) => {
   
   // Add a new reminder record
   exports.addReminder = tryCatch(async (req, res, next) => {
-    const {  title, description, remind_time } = req.body;
+    const {  title, description, timestamp } = req.body;
     const user_id=req.user.id;
-    const row = await pool.query('INSERT INTO reminders (user_id, title, description, remind_time) VALUES($1, $2, $3, $4) RETURNING *', [user_id, title, description, new Date(remind_time)]);
+    const row = await pool.query('INSERT INTO reminders (user_id, title, description, timestamp) VALUES($1, $2, $3, $4) RETURNING *', [user_id, title, description, new Date(timestamp)]);
     return res.status(201).json({
       message: "New reminder record added for the user",
       data: {
