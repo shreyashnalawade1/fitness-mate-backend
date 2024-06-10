@@ -30,7 +30,6 @@ exports.getReminders = tryCatch(async (req, res, next) => {
     const whatsapp=await pool.query('SELECT * from whatsappNumbers where user_id='+req.user.id+";");
     // console.log(whatsapp);
     await sendNotification( {type:"wp",msg:"A new reminder has been added",to:whatsapp.rows[0].no});
-    console.log(req.user.email)
     await sendNotification({type:"email",msg:"A new reminder has been added",to:req.user.email});
     const row = await pool.query('INSERT INTO reminders (user_id, title, description, timestamp) VALUES($1, $2, $3, $4) RETURNING *', [user_id, title, description, new Date(timestamp)]);
     return res.status(201).json({

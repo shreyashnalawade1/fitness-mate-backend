@@ -7,8 +7,8 @@ const reminderQueue=new Queue('reminder',{
     }
   });
   
+ console.log(process.env.REDDIS_PASSWORD,process.env.REDDIS_HOST); 
 module.exports.sendNotification=async function(payload){
-    console.log(payload);
       reminderQueue.add(payload);
 }
 // {type:"wp",msg:"This is a reminder from email",to:"whatsapp:+919359914896"}
