@@ -4,6 +4,7 @@ const app = require("./server.js")
 const connectDb = require("./config/dbconnect.js");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
+const { sendNotification } = require("./utils/notification.js");
 
 const port = process.env.PORT || 5000;
 
@@ -44,7 +45,7 @@ else {
     })
   })
 
-  server.listen(port, () => {
+  server.listen(port, async() => {
     console.log(`Server is running on port ${port}`);
   });
   // console.log(`Worker ${process.pid} started`);
